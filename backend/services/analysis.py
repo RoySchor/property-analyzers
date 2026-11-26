@@ -153,7 +153,7 @@ def compute_deal_scores(conn: sqlite3.Connection, settings: dict[str, str]) -> N
     listings = conn.execute(
         """
         SELECT * FROM listings
-        WHERE status IN ('for_sale', 'pending', 'contingent') AND list_price >= 10000 AND list_price <= ?
+        WHERE status IN ('for_sale', 'pending', 'contingent', 'off_market') AND list_price >= 10000 AND list_price <= ?
         """,
         (max_price,),
     ).fetchall()
